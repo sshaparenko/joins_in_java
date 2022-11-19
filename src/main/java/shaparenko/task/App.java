@@ -6,8 +6,6 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
 
-        int arr[] = {1,2,3};
-
         List<DataRow<Integer, String>> leftRowList = new ArrayList<>();
         leftRowList.add(new DataRow<>(0, "Ukraine"));
         leftRowList.add(new DataRow<>(1, "Germany"));
