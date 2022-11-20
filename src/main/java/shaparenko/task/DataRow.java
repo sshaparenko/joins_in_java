@@ -2,7 +2,7 @@ package shaparenko.task;
 
 import java.util.Objects;
 
-public class DataRow<K extends Comparable<K>, V> implements Comparable<DataRow>{
+public class DataRow<K extends Comparable<K>, V>{
     private final K index;
     private final V name;
 
@@ -38,13 +38,5 @@ public class DataRow<K extends Comparable<K>, V> implements Comparable<DataRow>{
     @Override
     public int hashCode() {
         return Objects.hash(index, name);
-    }
-
-    public int compareTo(DataRow o) {
-        if (index == o.getIndex()){
-            return 1;
-        } else {
-            return 0;
-        }
     }
 }
