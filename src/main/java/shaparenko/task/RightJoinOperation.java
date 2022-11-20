@@ -5,11 +5,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-public class RightJoinOperation implements JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>, JoinedDataRow<Integer, String, String>>{
+public class RightJoinOperation implements JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>, JoinedDataRow<Integer, String, String>> {
 
-    private void addElementByRightJoin(DataRow<Integer, String> leftRow, DataRow<Integer, String> rightRow){
-
+    private void addElementByRightJoin(DataRow<Integer, String> leftRow, DataRow<Integer, String> rightRow, List<JoinedDataRow<Integer, String, String>> joinedRowList) {
+        if (leftRow.getIndex() == rightRow.getIndex()) {
+            joinedRowList.add(new JoinedDataRow<>(leftRow.getIndex(), leftRow.getName(), rightRow.getName()));
+        } else if (leftRow.getIndex() != rightRow.getIndex()) {
+            joinedRowList.add(new JoinedDataRow<>(rightRow.getIndex(), null, rightRow.getName()));
+        }
     }
+
     public Collection<JoinedDataRow<Integer, String, String>> join(Collection<DataRow<Integer, String>> leftCollection, Collection<DataRow<Integer, String>> rightCollection) {
 
         List<JoinedDataRow<Integer, String, String>> joinedRowList = new ArrayList<>();
@@ -17,7 +22,7 @@ public class RightJoinOperation implements JoinOperation<DataRow<Integer, String
         Iterator<DataRow<Integer, String>> leftIterator = leftCollection.iterator();
         Iterator<DataRow<Integer, String>> rightIterator = rightCollection.iterator();
 
-        while(leftIterator.hasNext() && rightIterator.hasNext()){
+        while (leftIterator.hasNext() && rightIterator.hasNext()) {
             DataRow<Integer, String> leftRow = leftIterator.next();
             DataRow<Integer, String> rightRow = rightIterator.next();
 
@@ -27,32 +32,16 @@ public class RightJoinOperation implements JoinOperation<DataRow<Integer, String
                     leftRow = leftIterator.next();
                 }
                 if (rightRow != null) {
-                    if (leftRow.getIndex() == rightRow.getIndex()){
-                        joinedRowList.add(new JoinedDataRow<>(leftRow.getIndex(), leftRow.getName(), rightRow.getName()));
-                    } else if (leftRow.getIndex() != rightRow.getIndex()) {
-                        joinedRowList.add(new JoinedDataRow<>(rightRow.getIndex(), null, rightRow.getName()));
-                    }
+                    addElementByRightJoin(leftRow, rightRow, joinedRowList);
                 }
             } else if (rightRow == null) {
                 while (rightRow == null) {
                     rightIterator.remove();
                     rightRow = rightIterator.next();
                 }
-
-                if (leftRow.getIndex() == rightRow.getIndex()){
-                    joinedRowList.add(new JoinedDataRow<>(leftRow.getIndex(), leftRow.getName(), rightRow.getName()));
-                } else if (leftRow.getIndex() != rightRow.getIndex()) {
-                    joinedRowList.add(new JoinedDataRow<>(rightRow.getIndex(), null, rightRow.getName()));
-                }
-
+                addElementByRightJoin(leftRow, rightRow, joinedRowList);
             } else {
-
-                if (leftRow.getIndex() == rightRow.getIndex()){
-                    joinedRowList.add(new JoinedDataRow<>(leftRow.getIndex(), leftRow.getName(), rightRow.getName()));
-                } else if (leftRow.getIndex() != rightRow.getIndex()) {
-                    joinedRowList.add(new JoinedDataRow<>(rightRow.getIndex(), null, rightRow.getName()));
-                }
-
+                addElementByRightJoin(leftRow, rightRow, joinedRowList);
             }
         }
         return joinedRowList;
