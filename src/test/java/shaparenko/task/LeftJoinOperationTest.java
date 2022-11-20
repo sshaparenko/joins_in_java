@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LeftJoinOperationTest {
 
     @Test
-    void join() {
+    void joinTest() {
         List<DataRow<Integer, String>> leftRowListTest = new ArrayList<>();
         leftRowListTest.add(new DataRow<>(0, "Ukraine"));
         leftRowListTest.add(new DataRow<>(1, "Germany"));
