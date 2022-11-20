@@ -31,7 +31,7 @@ class RightJoinOperationTest {
     }
 
     @Test
-    void nullObject(){
+    void nullCheck(){
         List<DataRow<Integer, String>> leftRowListTest = new ArrayList<>();
         leftRowListTest.add(null);
         leftRowListTest.add(null);
