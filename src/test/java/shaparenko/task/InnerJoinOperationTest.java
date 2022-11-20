@@ -32,12 +32,13 @@ class InnerJoinOperationTest {
     @Test
     void nullObject(){
         List<DataRow<Integer, String>> leftRowListTest = new ArrayList<>();
-        leftRowListTest.add(null);
-        leftRowListTest.add(null);
+//        leftRowListTest.add(null);
+//        leftRowListTest.add(null);
         leftRowListTest.add(new DataRow<>(0, "Ukraine"));
-        leftRowListTest.add(null);
-        leftRowListTest.add(null);
+//        leftRowListTest.add(null);
+//        leftRowListTest.add(null);
         leftRowListTest.add(new DataRow<>(1, "Germany"));
+        leftRowListTest.add(null);
         leftRowListTest.add(null);
         leftRowListTest.add(new DataRow<>(2, "France"));
         leftRowListTest.add(null);

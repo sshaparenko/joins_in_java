@@ -4,6 +4,7 @@ import java.util.*;
 
 public class LeftJoinOperation implements JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>, JoinedDataRow<Integer, String, String>> {
 
+    // this method implements addition by left join rule
     private void addElementByLeftJoin(DataRow<Integer, String> leftRow, DataRow<Integer, String> rightRow, List<JoinedDataRow<Integer, String, String>> joinedRowList) {
         if (leftRow.getIndex() == rightRow.getIndex()) {
             joinedRowList.add(new JoinedDataRow<>(leftRow.getIndex(), leftRow.getName(), rightRow.getName()));
