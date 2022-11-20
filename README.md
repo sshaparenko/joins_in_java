@@ -84,7 +84,7 @@ The `nullCheck()` for LeftJoinOperation class.
 ```
 Result of the `nullCheck()` execution:
 
-![](../../../Pictures/Screenshots/Screenshot from 2022-11-20 14-21-17.png)
+![](img/Screenshot from 2022-11-20 14-21-17.png)
 ---
 ### Testing the `mvn` commands
 
@@ -94,11 +94,11 @@ Result of the `nullCheck()` execution:
 
 Testing `git clone ...` and `mvn exec:java`:
 
-![](../../../Pictures/Screenshots/Screenshot from 2022-11-20 14-30-06.png)
-![](../../../Pictures/Screenshots/Screenshot from 2022-11-20 14-30-34.png)
+![](img/Screenshot from 2022-11-20 14-30-06.png)
+![](img/Screenshot from 2022-11-20 14-30-34.png)
 
 Testing `mvn test`:
 
-![](../../../Pictures/Screenshots/Screenshot from 2022-11-20 14-31-21.png)
+![](img/Screenshot from 2022-11-20 14-31-21.png)
 
 ---
